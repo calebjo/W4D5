@@ -25,26 +25,23 @@ def okay_two_sum?(arr, target)
     false
 end
 
-# def b_search(arr,target)
-#     return arr if arr.count <=1  
-
-#     mid = arr.length/2
-
-#     lower = b_search(arr[0...mid],target)
-#     higher = b_search(arr[mid+1..-1],target)
-
-#     case 
-#     end
-# end
-
-
-
 
 def two_sum?(arr, target)
-    hash = Hash.new(0)
-    arr.each_with_index {|ele,i| hash[i] = ele }
-    p hash
-    hash.any? {|k,v| hash.has_value?(target - v)}
+    # hash = Hash.new(0)
+    # arr.each_with_index {|ele,i| hash[ele] = ele }
+    # p hash
+    # hash.any? {|k,v| hash.has_value?(target - v) && !hash.has_key?(target - v)}
+    hash = Hash.new {|k, v| k[v] = false }
+
+    current_sum = array[0]
+    largest_sum = array[0]
+
+    (1...array.length).each do |i|
+        current_sum = 0
+        current_sum += array[i]
+        largest_sum += current_sum
+        hash[largest_sum] = true
+    end
 end
 
 arr = [0, 1, 5, 7]
