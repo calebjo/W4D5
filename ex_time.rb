@@ -34,12 +34,27 @@ def subsum(array)
     sub_arrays.map {|sub_arr| sub_arr.sum }.max
 end
 
-list = [-5, -1, -3]
-p subsum(list) # => -1 (from [-1])
+# list = [-5, -1, -3]
+list = [2, 3, -6, 7, -6, 7]
+# p subsum(list) # => -1 (from [-1])
 # O(n^2)
 
 def subsum2(array)
-   
+   current_sum = array[0]
+   largest_sum = array[0]
+
+    (1..array.length).each do |i|
+        current_sum = 0
+        current_sum += array[i]
+        largest_sum = current_sum if current_sum > largest_sum
+    end
+
+#    array.each do |ele|
+#     current_sum += ele if current_sum < current_sum + ele
+#    end
+
+   largest_sum = current_sum
 
 end
 
+p subsum2(list) # => -1 (from [-1])
