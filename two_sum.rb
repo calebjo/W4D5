@@ -10,40 +10,43 @@ end
 
 
 
-# arr = [0, 1, 5, 7]
+arr = [0, 1, 5, 7]
+# target_arr[6,5,1,-1]
 # p bad_two_sum?(arr, 6) # => should be true
 # p bad_two_sum?(arr, 10) # => should be false
 
 
 def okay_two_sum?(arr, target)
     sorted = arr.sort
-
-    mid = arr.length/2
-
-    lower = arr[0...mid]
-    higher = arr[mid..-1]
-
-end
-
-def b_search(arr,target)
-    return arr if arr.count <=1
-    sorted = arr.sort
-
-    mid = arr.length/2
-
-    lower = b_search(arr[0...mid],target)
-    higher = b_search(arr[mid+1..-1],target)
-
-    case arr.include?(target - arr[mid])
-        when true
-            return true
-        when false
-            return false
+    target_arr = sorted.map {|ele| target - ele}
+    target_arr.each do |ele|
+        return true if sorted.bsearch_index {|x| ele == x} != nil
     end
+    false
 end
 
+# def b_search(arr,target)
+#     return arr if arr.count <=1  
 
-# arr = [0, 1, 5, 7]
-# p b_search(arr, 6) # => should be true
-# p b_search(arr, 10) # => should be false
+#     mid = arr.length/2
 
+#     lower = b_search(arr[0...mid],target)
+#     higher = b_search(arr[mid+1..-1],target)
+
+#     case 
+#     end
+# end
+
+
+
+
+def two_sum?(arr, target)
+    hash = Hash.new(0)
+    arr.each_with_index {|ele,i| hash[i] = ele }
+    p hash
+    hash.any? {|k,v| hash.has_value?(target - v)}
+end
+
+arr = [0, 1, 5, 7]
+p two_sum?(arr, 6) # => should be true
+p two_sum?(arr, 10) # => should be false
