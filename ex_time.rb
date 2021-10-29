@@ -38,3 +38,8 @@ list = [-5, -1, -3]
 p subsum(list) # => -1 (from [-1])
 # O(n^2)
 
+def subsum2(array)
+   
+
+end
+
