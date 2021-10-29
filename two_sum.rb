@@ -42,6 +42,7 @@ def two_sum?(arr, target)
         largest_sum += current_sum
         hash[largest_sum] = true
     end
+    hash[target]
 end
 
 arr = [0, 1, 5, 7]
