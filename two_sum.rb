@@ -25,14 +25,14 @@ def okay_two_sum?(arr, target)
 
 end
 
-def bsort(arr,target)
+def b_search(arr,target)
     return arr if arr.count <=1
     sorted = arr.sort
 
     mid = arr.length/2
 
-    lower = bsort(arr[0...mid],target)
-    higher = bsort(arr[mid+1..-1],target)
+    lower = b_search(arr[0...mid],target)
+    higher = b_search(arr[mid+1..-1],target)
 
     case arr.include?(target - arr[mid])
         when true
@@ -43,6 +43,7 @@ def bsort(arr,target)
 end
 
 
-arr = [0, 1, 5, 7]
-p bsort(arr, 6) # => should be true
-p bsort(arr, 10) # => should be false
+# arr = [0, 1, 5, 7]
+# p b_search(arr, 6) # => should be true
+# p b_search(arr, 10) # => should be false
+
